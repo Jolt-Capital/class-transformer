@@ -1,19 +1,17 @@
 {
+  "outDir": "./build",
+  "include": ["./**/*.ts", "./**/*.js"],
+  "exclude": ["build/", "data/", "dist/", "public/", "tenants/build/", "cli/draft/"],
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es2018",
-    "lib": ["es2018"],
-    "outDir": "build/node",
-    "rootDir": "./src",
-    "strict": true,
+    "outDir": "./build",
+    "baseUrl": ".",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "resolveJsonModule": true,
+    "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "inlineSources": true,
-    "removeComments": false,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"]
+    "moduleResolution": "node"
+  }
 }

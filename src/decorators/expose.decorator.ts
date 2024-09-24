@@ -8,7 +8,7 @@ import { ExposeOptions } from '../interfaces';
  *
  * Can be applied to class definitions and properties.
  */
-export function Expose(options: ExposeOptions = {}): PropertyDecorator & ClassDecorator {
+export function Expose(options: ExposeOptions = {}): any /* PropertyDecorator & ClassDecorator */ {
   /**
    * NOTE: The `propertyName` property must be marked as optional because
    * this decorator used both as a class and a property decorator and the
@@ -21,5 +21,15 @@ export function Expose(options: ExposeOptions = {}): PropertyDecorator & ClassDe
       propertyName: propertyName as string,
       options,
     });
+  };
+}
+
+/**
+ *
+ */
+export function Expose5(options: ExposeOptions = {}) {
+  return function (target: any, context: ClassFieldDecoratorContext | ClassDecoratorContext): void {
+    context.metadata[context.name] = context.metadata[context.name] ?? {};
+    context.metadata[context.name]['expose'] = options;
   };
 }
