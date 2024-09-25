@@ -1,8 +1,9 @@
 {
   "outDir": "./build",
   "include": ["./**/*.ts", "./**/*.js"],
-  "exclude": ["sample/", "build/", "data/", "dist/", "public/", "tenants/build/", "cli/draft/"],
+  "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"],
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./build",
     "baseUrl": ".",
     "target": "ESNext",
