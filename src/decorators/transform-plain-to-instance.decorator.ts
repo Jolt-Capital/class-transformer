@@ -6,7 +6,7 @@ import { ClassTransformOptions, ClassConstructor } from '../interfaces';
  *
  * Can be applied to functions and getters/setters only.
  */
-export function TransformPlainToInstance(
+export function TransformPlainToInstanceExperimental(
   classType: ClassConstructor<any>,
   params?: ClassTransformOptions
 ): MethodDecorator {
@@ -23,4 +23,8 @@ export function TransformPlainToInstance(
         : classTransformer.plainToInstance(classType, result, params);
     };
   };
+}
+
+export function TransformPlainToInstance(classType: ClassConstructor<any>, params?: ClassTransformOptions) {
+  return function (target: any, context: ClassMethodDecoratorContext): void {};
 }

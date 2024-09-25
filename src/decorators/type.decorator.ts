@@ -1,5 +1,6 @@
 import { defaultMetadataStorage } from '../storage';
 import { TypeHelpOptions, TypeOptions } from '../interfaces';
+import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 
 /**
  * Specifies a type of the property.
@@ -7,7 +8,7 @@ import { TypeHelpOptions, TypeOptions } from '../interfaces';
  *
  * Can be applied to properties only.
  */
-export function Type(
+export function TypeExperimental(
   typeFunction?: (type?: TypeHelpOptions) => Function,
   options: TypeOptions = {}
 ): PropertyDecorator {
@@ -20,5 +21,12 @@ export function Type(
       typeFunction,
       options,
     });
+  };
+}
+
+export function Type(typeFunction?: (type?: TypeHelpOptions) => Function, options: TypeOptions = {}) {
+  return function (target: any, context: ClassFieldDecoratorContext | ClassAccessorDecoratorContext): void {
+    const fieldMetadata: FieldMetadata = getFieldMetadata(context, context.name);
+    fieldMetadata.type = { typeFunction, options };
   };
 }

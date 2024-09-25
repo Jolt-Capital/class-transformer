@@ -1,5 +1,13 @@
 import { defaultMetadataStorage } from '../storage';
-import { ExposeOptions } from '../interfaces';
+import {
+  ExcludeMetadata,
+  ExposeMetadata,
+  ExposeOptions,
+  TransformMetadata,
+  TypeHelpOptions,
+  TypeMetadata,
+} from '../interfaces';
+import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 
 /**
  * Marks the given class or property as included. By default the property is included in both
@@ -8,7 +16,7 @@ import { ExposeOptions } from '../interfaces';
  *
  * Can be applied to class definitions and properties.
  */
-export function Expose(options: ExposeOptions = {}): any /* PropertyDecorator & ClassDecorator */ {
+export function ExposeExperimental(options: ExposeOptions = {}): any /* PropertyDecorator & ClassDecorator */ {
   /**
    * NOTE: The `propertyName` property must be marked as optional because
    * this decorator used both as a class and a property decorator and the
@@ -25,11 +33,16 @@ export function Expose(options: ExposeOptions = {}): any /* PropertyDecorator & 
 }
 
 /**
- *
+ * When a Class is Expose, all Class Fields are inspected and (Expose|Exclude|Type|Transform)metadata are added to the default defaultMetadataStorage
  */
-export function Expose5(options: ExposeOptions = {}) {
-  return function (target: any, context: ClassFieldDecoratorContext | ClassDecoratorContext): void {
-    context.metadata[context.name] = context.metadata[context.name] ?? {};
-    context.metadata[context.name]['expose'] = options;
+export function Expose(options: ExposeOptions = {}) {
+  return function (target: any, context: ClassMemberDecoratorContext | ClassDecoratorContext): void {
+    if (context.kind === 'field') {
+      const fieldMetadata: FieldMetadata = getFieldMetadata(context, context.name);
+      fieldMetadata.expose = { options };
+    } else if (context.kind === 'class') {
+      const exposeMetadata: ExposeMetadata = { target, propertyName: undefined, options: options };
+      defaultMetadataStorage.addExposeMetadata(exposeMetadata);
+    }
   };
 }

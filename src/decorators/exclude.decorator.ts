@@ -1,5 +1,6 @@
 import { defaultMetadataStorage } from '../storage';
-import { ExcludeOptions } from '../interfaces';
+import { ExcludeMetadata, ExcludeOptions } from '../interfaces';
+import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 
 /**
  * Marks the given class or property as excluded. By default the property is excluded in both
@@ -8,7 +9,7 @@ import { ExcludeOptions } from '../interfaces';
  *
  * Can be applied to class definitions and properties.
  */
-export function Exclude(options: ExcludeOptions = {}): PropertyDecorator & ClassDecorator {
+export function ExcludeExperimental(options: ExcludeOptions = {}): PropertyDecorator & ClassDecorator {
   /**
    * NOTE: The `propertyName` property must be marked as optional because
    * this decorator used both as a class and a property decorator and the
@@ -21,5 +22,17 @@ export function Exclude(options: ExcludeOptions = {}): PropertyDecorator & Class
       propertyName: propertyName as string,
       options,
     });
+  };
+}
+
+export function Exclude(options: ExcludeOptions = {}) {
+  return function (target: any, context: ClassMemberDecoratorContext | ClassDecoratorContext): void {
+    if (context.kind === 'field') {
+      const fieldMetadata: FieldMetadata = getFieldMetadata(context, context.name);
+      fieldMetadata.exclude = { options };
+    } else if (context.kind === 'class') {
+      const excludeMetadata: ExcludeMetadata = { target, propertyName: undefined, options: options };
+      defaultMetadataStorage.addExcludeMetadata(excludeMetadata);
+    }
   };
 }

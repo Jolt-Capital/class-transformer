@@ -1,5 +1,6 @@
 import { TypeMetadata, ExposeMetadata, ExcludeMetadata, TransformMetadata } from './interfaces';
 import { TransformationType } from './enums';
+import { storeTargetMetadata } from './decorators';
 
 /**
  * Storage all library metadata.
@@ -14,6 +15,14 @@ export class MetadataStorage {
   private _exposeMetadatas = new Map<Function, Map<string, ExposeMetadata>>();
   private _excludeMetadatas = new Map<Function, Map<string, ExcludeMetadata>>();
   private _ancestorsMap = new Map<Function, Function[]>();
+  private _processedMap = new Map<Function, boolean>();
+
+  isProcessed(target: Function) {
+    return this._processedMap.has(target) && this._processedMap.get(target);
+  }
+  addProcessed(target: Function) {
+    this._processedMap.set(target, true);
+  }
 
   // -------------------------------------------------------------------------
   // Adder Methods
@@ -159,6 +168,7 @@ export class MetadataStorage {
     this._exposeMetadatas.clear();
     this._excludeMetadatas.clear();
     this._ancestorsMap.clear();
+    this._processedMap.clear();
   }
 
   // -------------------------------------------------------------------------
@@ -246,6 +256,7 @@ export class MetadataStorage {
         baseClass = Object.getPrototypeOf(baseClass.prototype.constructor)
       ) {
         ancestors.push(baseClass);
+        storeTargetMetadata(baseClass);
       }
       this._ancestorsMap.set(target, ancestors);
     }

@@ -2,8 +2,10 @@ import { defaultMetadataStorage } from './storage';
 import { ClassTransformOptions, TypeHelpOptions, TypeMetadata, TypeOptions } from './interfaces';
 import { TransformationType } from './enums';
 import { getGlobal, isPromise } from './utils';
+import { storeTargetMetadata } from './decorators';
 
 function instantiateArrayType(arrayType: Function): Array<any> | Set<any> {
+  storeTargetMetadata(arrayType);
   const array = new (arrayType as any)();
   if (!(array instanceof Set) && !('push' in array)) {
     return [];
@@ -36,6 +38,8 @@ export class TransformOperationExecutor {
     isMap: boolean,
     level: number = 0
   ): any {
+    storeTargetMetadata(targetType);
+
     if (Array.isArray(value) || value instanceof Set) {
       const newValue =
         arrayType && this.transformationType === TransformationType.PLAIN_TO_CLASS
@@ -139,8 +143,12 @@ export class TransformOperationExecutor {
         } else {
           // We are good we can use the built-in constructor
           targetType = value.constructor;
+          storeTargetMetadata(targetType);
         }
-      if (!targetType && source) targetType = source.constructor;
+      if (!targetType && source) {
+        targetType = source.constructor;
+        storeTargetMetadata(targetType);
+      }
 
       if (this.options.enableCircularCheck) {
         // add transformed type to prevent circular references

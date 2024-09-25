@@ -1,3 +1,4 @@
+export * from './commons.decorator';
 export * from './exclude.decorator';
 export * from './expose.decorator';
 export * from './transform-instance-to-instance.decorator';
