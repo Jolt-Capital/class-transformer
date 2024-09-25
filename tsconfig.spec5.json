@@ -1,7 +1,7 @@
 {
   "outDir": "./build",
   "include": ["./**/*.ts", "./**/*.js"],
-  "exclude": ["build/", "data/", "dist/", "public/", "tenants/build/", "cli/draft/"],
+  "exclude": ["sample/", "build/", "data/", "dist/", "public/", "tenants/build/", "cli/draft/"],
   "compilerOptions": {
     "outDir": "./build",
     "baseUrl": ".",
