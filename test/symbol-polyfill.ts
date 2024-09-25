@@ -2,6 +2,10 @@
 // symbol-polyfill.ts
 
 export {};
+
+console.log('globalThis', globalThis);
+console.log('this', this);
+
 declare global {
   interface SymbolConstructor {
     readonly metadata: unique symbol;
@@ -12,10 +16,11 @@ declare global {
 
 const _metadata = Object.create(null);
 
-if (typeof Symbol === 'function' && Symbol.metadata)
-  Object.defineProperty(this, Symbol.metadata, {
+if (typeof Symbol === 'function' && Symbol.metadata) {
+  Object.defineProperty(globalThis, Symbol.metadata, {
     enumerable: true,
     configurable: true,
     writable: true,
     value: _metadata,
   });
+}

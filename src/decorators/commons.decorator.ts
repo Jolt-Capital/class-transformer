@@ -1,4 +1,3 @@
-import './symbol-polyfill';
 import {
   ExcludeOptions,
   ExposeOptions,

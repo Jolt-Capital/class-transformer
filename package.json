@@ -23,7 +23,7 @@
     "typescript-serializer"
   ],
   "scripts": {
-    "build": "npm run build:cjs",
+    "build": "npm run build:clean && npm run build:es2015 && npm run build:esm5 && npm run build:cjs && npm run build:esNext && npm run build:umd && npm run build:types && jq 'del(.devDependencies) | del(.scripts)' package.json > build/package.json",
     "build:clean": "rimraf build",
     "build:esNext": "tsc --project tsconfig.prod.esNext.json",
     "build:es2015": "tsc --project tsconfig.prod.esm2015.json",

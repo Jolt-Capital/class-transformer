@@ -25,7 +25,7 @@ export function TypeExperimental(
 }
 
 export function Type(typeFunction?: (type?: TypeHelpOptions) => Function, options: TypeOptions = {}) {
-  return function (target: any, context: ClassFieldDecoratorContext | ClassAccessorDecoratorContext): void {
+  return function (target: any, context: ClassMemberDecoratorContext): void {
     const fieldMetadata: FieldMetadata = getFieldMetadata(context, context.name);
     fieldMetadata.type = { typeFunction, options };
   };
