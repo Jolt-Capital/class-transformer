@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./build/node",
-    "baseUrl": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["ESNext"],
-    "resolveJsonModule": true,
-    "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
+    "outDir": "./build/node",
+    "rootDir": "./src",
     "strict": true,
+    "sourceMap": true,
     "inlineSources": true,
     "removeComments": false,
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"]
 }
