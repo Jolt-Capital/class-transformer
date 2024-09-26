@@ -1,18 +1,22 @@
 {
-  "outDir": "./build",
-  "include": ["./**/*.ts", "./**/*.js"],
-  "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"],
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./build",
-    "baseUrl": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["ESNext"],
+    "outDir": "build/node",
+    "rootDir": "./src",
+    "strict": false, // if true visualcode displays many errors
+    "sourceMap": true,
+    "inlineSources": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    // added
+    "baseUrl": ".", // useless?
     "resolveJsonModule": true,
     "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node"
-  }
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"]
 }

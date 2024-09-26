@@ -3,9 +3,6 @@
 
 export {};
 
-console.log('globalThis', globalThis);
-console.log('this', this);
-
 declare global {
   interface SymbolConstructor {
     readonly metadata: unique symbol;

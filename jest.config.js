@@ -1,14 +1,8 @@
 module.exports = {
-  // preset: 'ts-jest',
-  // testEnvironment: 'node',
-  // collectCoverageFrom: ['src/**/*.ts', '!src/**/index.ts', '!src/**/*.interface.ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/index.ts', '!src/**/*.interface.ts'],
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['./test/setupTest.ts'],
   transform: {
-    '^.+.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.spec5.json' }],
+    '^.+.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.spec.json' }],
   },
-  // globals: {
-  //   'ts-jest': {
-  //     tsconfig: 'tsconfig.spec5.json',
-  //   },
-  // },
 };
