@@ -4,15 +4,16 @@
     "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["ESNext"],
-    "outDir": "/build/node",
+    "outDir": "build/node",
     "rootDir": "./src",
-    "strict": false,
+    "strisct": false, // if true visualcode displays many errors
     "sourceMap": true,
     "inlineSources": true,
     "removeComments": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    // "baseUrl": ".",
+    // added
+    "baseUrl": ".", // useless?
     "resolveJsonModule": true,
     "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true
