@@ -17,7 +17,7 @@ import { ClassTransformer } from '../ClassTransformer';
 
 export type FieldMetadata = {
   expose?: { options: ExposeOptions };
-  type?: { typeFunction?: (type?: TypeHelpOptions) => Function; options: TypeOptions };
+  type?: { typeFunction?: (type?: TypeHelpOptions) => Function; options: TypeOptions; reflectedType?: Function };
   exclude?: { options: ExcludeOptions };
   transform: { transformFn: (params: TransformFnParams) => any; options: TransformOptions }[];
 };
@@ -51,7 +51,7 @@ export function storeTargetMetadata(target: Function | TypeMetadata) {
         const typeMetadata: TypeMetadata = {
           target,
           propertyName: key,
-          reflectedType: value.type.typeFunction(),
+          reflectedType: value.type.reflectedType ?? value.type.typeFunction(),
           typeFunction: value.type.typeFunction,
           options: value.type.options,
         };

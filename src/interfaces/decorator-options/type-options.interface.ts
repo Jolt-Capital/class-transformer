@@ -1,3 +1,4 @@
+import { ClassConstructor } from '../class-constructor.type';
 import { DiscriminatorDescriptor } from './type-discriminator-descriptor.interface';
 
 /**

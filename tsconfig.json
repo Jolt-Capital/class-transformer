@@ -6,7 +6,7 @@
     "lib": ["ESNext"],
     "outDir": "build/node",
     "rootDir": "./src",
-    "strisct": false, // if true visualcode displays many errors
+    "strict": false, // if true visualcode displays many errors
     "sourceMap": true,
     "inlineSources": true,
     "removeComments": false,

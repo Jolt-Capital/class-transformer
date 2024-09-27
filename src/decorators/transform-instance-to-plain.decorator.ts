@@ -22,6 +22,16 @@ export function TransformInstanceToPlainExperimental(params?: ClassTransformOpti
   };
 }
 
-export function TransformInstanceToPlain(params?: ClassTransformOptions) {
-  return function (target: any, context: ClassMethodDecoratorContext): void {};
+export function TransformInstanceToPlain(options?: ClassTransformOptions) {
+  return function (originalMethod: Function) {
+    return function (...args: any[]) {
+      const classTransformer: ClassTransformer = new ClassTransformer();
+      const result: any = originalMethod.apply(this, args);
+      const isPromise =
+        !!result && (typeof result === 'object' || typeof result === 'function') && typeof result.then === 'function';
+      return isPromise
+        ? result.then((data: any) => classTransformer.instanceToPlain(data, options))
+        : classTransformer.instanceToPlain(result, options);
+    };
+  };
 }

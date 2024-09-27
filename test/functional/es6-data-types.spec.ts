@@ -1,16 +1,16 @@
 import 'reflect-metadata';
 import { instanceToPlain, plainToInstance, Expose } from '../../src/index';
 import { defaultMetadataStorage } from '../../src/storage';
-import { Type } from '../../src/decorators';
+import { Type, TypeForMap, TypeForSet } from '../../src/decorators';
 
 describe('es6 data types', () => {
-  it.only('using Map', () => {
+  it('using Map', () => {
     defaultMetadataStorage.clear();
 
     class User {
       id: number;
       name: string;
-      @Type(() => String)
+      @TypeForMap(() => String, {})
       weapons: Map<string, string>;
     }
 
@@ -63,7 +63,7 @@ describe('es6 data types', () => {
     class User {
       id: number;
       name: string;
-      @Type(() => Set)
+      @TypeForSet(() => Set)
       weapons: Set<string>;
     }
 
@@ -112,7 +112,7 @@ describe('es6 data types', () => {
     class User {
       id: number;
       name: string;
-      @Type(() => Weapon)
+      @TypeForMap(() => Weapon)
       weapons: Map<string, Weapon>;
     }
 
@@ -199,7 +199,7 @@ describe('es6 data types', () => {
     class User {
       id: number;
       name: string;
-      @Type(() => Weapon)
+      @TypeForSet(() => Weapon)
       weapons: Set<Weapon>;
     }
 
@@ -264,7 +264,7 @@ describe('es6 data types', () => {
       @Expose() id: number;
       @Expose() name: string;
       @Expose()
-      @Type(() => Weapon)
+      @TypeForMap(() => Weapon)
       weapons: Map<string, Weapon>;
     }
 
