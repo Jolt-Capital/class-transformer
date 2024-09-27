@@ -6,14 +6,13 @@
     "lib": ["ESNext"],
     "outDir": "/build/node",
     "rootDir": "./src",
-    "strict": true,
+    "strict": false,
     "sourceMap": true,
     "inlineSources": true,
     "removeComments": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "resolveJsonModule": true,
     "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true

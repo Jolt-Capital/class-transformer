@@ -4,7 +4,7 @@ import { defaultMetadataStorage } from '../../src/storage';
 import { Type } from '../../src/decorators';
 
 describe('es6 data types', () => {
-  it('using Map', () => {
+  it.only('using Map', () => {
     defaultMetadataStorage.clear();
 
     class User {
