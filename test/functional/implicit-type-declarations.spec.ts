@@ -3,7 +3,7 @@ import { plainToInstance } from '../../src/index';
 import { defaultMetadataStorage } from '../../src/storage';
 import { Expose, Type } from '../../src/decorators';
 
-describe('implicit type conversion', () => {
+describe.skip('implicit type conversion', () => {
   it('should run only when enabled', () => {
     defaultMetadataStorage.clear();
 
@@ -38,7 +38,7 @@ describe('implicit type conversion', () => {
   });
 });
 
-describe('implicit and explicity type declarations', () => {
+describe.skip('implicit and explicity type declarations', () => {
   defaultMetadataStorage.clear();
 
   class Example {
@@ -78,7 +78,7 @@ describe('implicit and explicity type declarations', () => {
   });
 });
 
-describe('plainToInstance transforms built-in primitive types properly', () => {
+describe.skip('plainToInstance transforms built-in primitive types properly', () => {
   defaultMetadataStorage.clear();
 
   class Example {

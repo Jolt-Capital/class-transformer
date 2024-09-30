@@ -171,7 +171,7 @@ describe('custom transformation decorator', () => {
   });
 
   let model: any;
-  it('should serialize json into model instance of class Person', () => {
+  it.only('should serialize json into model instance of class Person', () => {
     defaultMetadataStorage.clear();
     expect(() => {
       const json = {

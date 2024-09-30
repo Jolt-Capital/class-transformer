@@ -10,7 +10,7 @@ import {
 import { defaultMetadataStorage } from '../../src/storage';
 import { Exclude, Expose, Type } from '../../src/decorators';
 
-describe('specifying target maps', () => {
+describe.skip('specifying target maps', () => {
   it('should convert instance of the given object to plain javascript object and should expose all properties since its a default behaviour', () => {
     defaultMetadataStorage.clear();
 

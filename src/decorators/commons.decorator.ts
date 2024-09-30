@@ -48,10 +48,19 @@ export function storeTargetMetadata(target: Function | TypeMetadata) {
       }
 
       if (value.type) {
+        const reflectedType =
+          // set by @TypeOfMap() or by @TypeOfSet()
+          value.type.reflectedType
+            ? value.type.reflectedType
+            : // set by @Type()?
+            typeof value.type.typeFunction === 'function'
+            ? value.type.typeFunction()
+            : // don't know what is reflectedType
+              undefined;
         const typeMetadata: TypeMetadata = {
           target,
           propertyName: key,
-          reflectedType: value.type.reflectedType ?? value.type.typeFunction,
+          reflectedType,
           typeFunction: value.type.typeFunction,
           options: value.type.options,
         };
