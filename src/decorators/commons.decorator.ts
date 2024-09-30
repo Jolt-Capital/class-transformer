@@ -51,7 +51,7 @@ export function storeTargetMetadata(target: Function | TypeMetadata) {
         const typeMetadata: TypeMetadata = {
           target,
           propertyName: key,
-          reflectedType: value.type.reflectedType ?? value.type.typeFunction(),
+          reflectedType: value.type.reflectedType ?? value.type.typeFunction,
           typeFunction: value.type.typeFunction,
           options: value.type.options,
         };
