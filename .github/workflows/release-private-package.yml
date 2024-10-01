@@ -1,4 +1,4 @@
-name: Github Package
+name: Deploy Package to Github
 
 on:
   release:
