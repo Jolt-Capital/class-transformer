@@ -14,6 +14,9 @@
     "type": "git",
     "url": "https://github.com/typestack/class-transformer.git"
   },
+"publishConfig": {
+  "registry": "https://npm.pkg.github.com"
+},
   "tags": [
     "serialization",
     "deserialization",

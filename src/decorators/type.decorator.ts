@@ -54,7 +54,10 @@ export function Type<T>(typeFunction?: (type?: TypeHelpOptions) => Function, opt
 }
 
 class Weapon {
-  constructor(public model: string, public range: number) {}
+  constructor(
+    public model: string,
+    public range: number
+  ) {}
 }
 type Toto = Map<string, Weapon>;
 type IsTotoMap = EnsureIsMap<Toto>;

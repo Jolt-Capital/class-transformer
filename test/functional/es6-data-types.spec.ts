@@ -106,7 +106,10 @@ describe('es6 data types', () => {
     defaultMetadataStorage.clear();
 
     class Weapon {
-      constructor(public model: string, public range: number) {}
+      constructor(
+        public model: string,
+        public range: number
+      ) {}
     }
 
     class User {
@@ -193,7 +196,10 @@ describe('es6 data types', () => {
     defaultMetadataStorage.clear();
 
     class Weapon {
-      constructor(public model: string, public range: number) {}
+      constructor(
+        public model: string,
+        public range: number
+      ) {}
     }
 
     class User {
@@ -257,7 +263,10 @@ describe('es6 data types', () => {
     defaultMetadataStorage.clear();
 
     class Weapon {
-      constructor(public model: string, public range: number) {}
+      constructor(
+        public model: string,
+        public range: number
+      ) {}
     }
 
     class User {
