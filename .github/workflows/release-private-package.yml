@@ -22,7 +22,7 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: npm ci --ignore-scripts
-      # - run: npm run prettier:check
+      - run: npm run prettier:check
       # - run: npm run lint:check
       # - run: npm run test:ci
       - run: npm run build:es2015
