@@ -1,5 +1,5 @@
 {
-  "name": "@jolt-capital/class-transformer",
+  "name": "@Jolt-Capital/class-transformer",
   "version": "0.5.1",
   "description": "Proper decorator-based transformation / serialization / deserialization of plain javascript objects to class constructors",
   "author": "TypeStack contributors",
