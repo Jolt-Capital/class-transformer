@@ -1,4 +1,3 @@
-import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 import { ClassTransformer } from '../ClassTransformer';
 import { ClassTransformOptions } from '../interfaces';
 

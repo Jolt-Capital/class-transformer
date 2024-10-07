@@ -1,12 +1,5 @@
 import { defaultMetadataStorage } from '../storage';
-import {
-  ExcludeMetadata,
-  ExposeMetadata,
-  ExposeOptions,
-  TransformMetadata,
-  TypeHelpOptions,
-  TypeMetadata,
-} from '../interfaces';
+import { ExposeMetadata, ExposeOptions } from '../interfaces';
 import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 
 /**

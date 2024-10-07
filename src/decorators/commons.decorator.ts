@@ -5,15 +5,12 @@ import {
   TypeHelpOptions,
   TypeOptions,
   TransformOptions,
-  ClassConstructor,
   TypeMetadata,
   ExposeMetadata,
   ExcludeMetadata,
   TransformMetadata,
-  ClassTransformOptions,
 } from '../interfaces';
 import { defaultMetadataStorage } from '../storage';
-import { ClassTransformer } from '../ClassTransformer';
 
 export type FieldMetadata = {
   expose?: { options: ExposeOptions };

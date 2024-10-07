@@ -310,7 +310,6 @@ export class TransformOperationExecutor {
           if (
             (this.transformationType === TransformationType.PLAIN_TO_CLASS ||
               this.transformationType === TransformationType.CLASS_TO_CLASS) &&
-            // eslint-disable-next-line @typescript-eslint/unbound-method
             ((descriptor && !descriptor.set) || newValue[newValueKey] instanceof Function)
           )
             //  || TransformationType === TransformationType.CLASS_TO_CLASS
