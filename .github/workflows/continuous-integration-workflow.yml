@@ -5,8 +5,8 @@ jobs:
     name: Linters
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: npm ci --ignore-scripts
       - run: npm run prettier:check
       - run: npm run lint:check
@@ -18,9 +18,9 @@ jobs:
         node-version: ['18.x', '20.x']
       fail-fast: false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Setting up Node.js (v${{ matrix.node-version }}.x)
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci --ignore-scripts
@@ -33,8 +33,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: npm ci --ignore-scripts
       - run: npm run build:es2015
       - run: npm run build:esm5
