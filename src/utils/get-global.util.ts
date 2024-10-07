@@ -13,18 +13,14 @@ export function getGlobal() {
     return global;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore: Cannot find name 'window'.
   if (typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: Cannot find name 'window'.
     return window;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore: Cannot find name 'self'.
   if (typeof self !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: Cannot find name 'self'.
     return self;
   }

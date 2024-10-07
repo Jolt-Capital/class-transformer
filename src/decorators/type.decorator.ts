@@ -1,5 +1,5 @@
 import { defaultMetadataStorage } from '../storage';
-import { ClassConstructor, TypeHelpOptions, TypeOptions } from '../interfaces';
+import { TypeHelpOptions, TypeOptions } from '../interfaces';
 import { FieldMetadata, getFieldMetadata } from './commons.decorator';
 
 /**
@@ -52,14 +52,6 @@ export function Type<T>(typeFunction?: (type?: TypeHelpOptions) => Function, opt
     fieldMetadata.type = { typeFunction, options };
   };
 }
-
-class Weapon {
-  constructor(public model: string, public range: number) {}
-}
-type Toto = Map<string, Weapon>;
-type IsTotoMap = EnsureIsMap<Toto>;
-type IteratedToto = Iterated<Toto>;
-type TotoConstructor = ClassConstructor<IteratedToto>;
 
 type EnsureIsMap<T> = T extends Map<any, any> ? T : never;
 

@@ -5,15 +5,12 @@ import {
   TypeHelpOptions,
   TypeOptions,
   TransformOptions,
-  ClassConstructor,
   TypeMetadata,
   ExposeMetadata,
   ExcludeMetadata,
   TransformMetadata,
-  ClassTransformOptions,
 } from '../interfaces';
 import { defaultMetadataStorage } from '../storage';
-import { ClassTransformer } from '../ClassTransformer';
 
 export type FieldMetadata = {
   expose?: { options: ExposeOptions };
@@ -53,10 +50,10 @@ export function storeTargetMetadata(target: Function | TypeMetadata) {
           value.type.reflectedType
             ? value.type.reflectedType
             : // set by @Type()?
-            typeof value.type.typeFunction === 'function'
-            ? value.type.typeFunction()
-            : // don't know what is reflectedType
-              undefined;
+              typeof value.type.typeFunction === 'function'
+              ? value.type.typeFunction()
+              : // don't know what is reflectedType
+                undefined;
         const typeMetadata: TypeMetadata = {
           target,
           propertyName: key,
